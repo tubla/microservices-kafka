@@ -1,4 +1,5 @@
 using Ecomm.Order.API;
+using Ecomm.Order.API.Kafka;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddDbContext<OrderDbContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("Database"));
 });
+
+builder.Services.AddScoped<IOrderProducer, OrderProducer>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
