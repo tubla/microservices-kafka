@@ -19,6 +19,14 @@ namespace Ecomm.Order.API.Controllers
         {
             context.Orders.Add(order);
             await context.SaveChangesAsync();
+
+
+            // After placing an order the quantity of the particular product should get reduced.
+            // This will be achieved through kafka
+
+
+            // Order will produce a message
+
             return order;
         }
     }
