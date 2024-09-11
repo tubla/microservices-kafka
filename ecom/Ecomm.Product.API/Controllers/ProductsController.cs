@@ -12,5 +12,11 @@ namespace Ecomm.Product.API.Controllers
         {
             return Ok(await context.Products.ToListAsync());
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            return Ok(await context.Products.FindAsync(id));
+        }
     }
 }

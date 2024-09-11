@@ -1,6 +1,6 @@
 ﻿namespace EComm.Model
 {
-    public class Order
+    public class OrderEntity
     {
         public int Id { get; set; }
         public string CustomerName { get; set; } = default!;

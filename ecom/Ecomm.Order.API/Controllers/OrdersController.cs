@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EComm.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecomm.Order.API.Controllers
@@ -11,6 +12,14 @@ namespace Ecomm.Order.API.Controllers
         public async Task<IActionResult> GetOrders()
         {
             return Ok(await context.Orders.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<OrderEntity> Create(OrderEntity order)
+        {
+            context.Orders.Add(order);
+            await context.SaveChangesAsync();
+            return order;
         }
     }
 }

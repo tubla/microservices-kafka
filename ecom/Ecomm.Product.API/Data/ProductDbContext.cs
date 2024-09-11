@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProductEntity = EComm.Model.Product;
+﻿using EComm.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ecomm.Product.API
 {
