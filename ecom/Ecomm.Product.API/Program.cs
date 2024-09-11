@@ -1,4 +1,5 @@
 using Ecomm.Product.API;
+using Ecomm.Product.API.Kafka;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddDbContext<ProductDbContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("Database"));
 });
+
+// this is a kafka consumer service which will be running as a background service
+builder.Services.AddHostedService<OrderConsumer>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
